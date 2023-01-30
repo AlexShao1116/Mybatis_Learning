@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuang.dao.UserMapper">
+
+    <!--<resultMap id="UserMap" type="User">
+        &lt;!&ndash;column数据库中的字段，property实体类中的属性&ndash;&gt;
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="pwd" property="password" />
+    </resultMap>-->
+
+
+    <!--全文读取-->
+    <select id="getUserList" resultType="User">
+        select * from mybatis.t
+    </select>
+
+    <!--精准查ID-->
+    <select id="getUserByID" parameterType="int" resultType="User">
+        select * from mybatis.t where id = #{id}
+    </select>
+
+    <!--模糊查内容-->
+    <select id="selectlike" parameterType="String" resultType="User">
+        select * from t where name like #{value}
+    </select>
+
+    <!--增-->
+    <insert id="addUser" parameterType="User">
+        insert into mybatis.t (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <!--改-->
+    <update id="updateUser" parameterType="User">
+        update mybatis.t set name=#{name},pwd=#{pwd} where id = #{id}
+    </update>
+
+    <!--删-->
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.t where id = #{id}
+    </delete>
+
+    <!--对象中的属性，可以直接取出来  传递map的key-->
+    <insert id="addUser2" parameterType="map">
+        insert into mybatis.t (id,name,pwd) values (#{userid},#{username},#{password})
+    </insert>
+
+    <select id="selectUserByLimit" parameterType="map" resultType="User">
+        select * from t limit #{startIndex},#{pageSize}
+    </select>
+
+</mapper>
+<!--
+解决project中属性与mysql表中属性名不一样问题：
+1.起别名：
+//    select id,name,pwd as password from mybatis.user where id = #{id}-->
+<!--
+2.resultmap映射：见第7行-->
+

@@ -1,0 +1,6 @@
+[INFO][22-06-09][com.kuang.dao.UserMapperTest]info:进入了testLog4j
+[DEBUG][22-06-09][com.kuang.dao.UserMapperTest]DEBUG:进入了testLog4j
+[ERROR][22-06-09][com.kuang.dao.UserMapperTest]erro:进入了testLog4j
+[INFO][22-06-09][com.kuang.dao.UserMapperTest]info:进入了testLog4j
+[DEBUG][22-06-09][com.kuang.dao.UserMapperTest]DEBUG:进入了testLog4j
+[ERROR][22-06-09][com.kuang.dao.UserMapperTest]erro:进入了testLog4j

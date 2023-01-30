@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuang.dao.UserMapper">
+
+    <!--全文读取-->
+    <select id="getUserList" resultType="com.kuang.pojo.User">
+        select * from mybatis.t
+    </select>
+
+    <!--精准查ID-->
+    <select id="getUserByID" parameterType="int" resultType="com.kuang.pojo.User">
+        select * from mybatis.t where id = #{id}
+    </select>
+
+    <!--模糊查内容-->
+    <select id="selectlike" parameterType="String" resultType="com.kuang.pojo.User">
+        select * from t where name like #{value}
+    </select>
+
+    <!--增-->
+    <insert id="addUser" parameterType="com.kuang.pojo.User">
+        insert into mybatis.t (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <!--改-->
+    <update id="updateUser" parameterType="com.kuang.pojo.User">
+        update mybatis.t set name=#{name},pwd=#{pwd} where id = #{id}
+    </update>
+
+    <!--删-->
+    <delete id="deleteUser" parameterType="int">
+        delete from mybatis.t where id = #{id}
+    </delete>
+
+    <!--对象中的属性，可以直接取出来  传递map的key-->
+    <insert id="addUser2" parameterType="map">
+        insert into mybatis.t (id,name,pwd) values (#{userid},#{username},#{password})
+    </insert>
+
+
+</mapper>
